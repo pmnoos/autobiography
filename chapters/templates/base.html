@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}MyStory{% endblock %}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   
+    <!-- Lightbox2 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    <script src="{% static 'js/init_tinymce.js' %}"></script>
+<!-- Lightbox2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</head>
+
+<!-- Header Section -->
+    <header class="site-header w3-blue-grey">
+        <h1 class="title">The Story of an Ordinary Man with an Extra-ordinary Life</h1>
+        <img src="{% static 'images/P in Positano.jpg' %}" alt="Header Image" class="header-image">
+        <p><h2 class="subtitle">Through the simplicity of my existence, I unearthed the profound truth <br>that to love and to be loved is the greatest adventure of all...</h2></p>
+    </header>
+<body class="w3-light-grey">
+    {% if messages %}
+    <div class="w3-panel w3-blue-grey w3-display-container">
+        <span onclick="this.parentElement.style.display='none'"
+        class="w3-button w3-red w3-large w3-display-topright">x</span>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="w3-bar w3-blue-grey w3-padding">
+        {% if user.is_authenticated %}
+        <div class="w3-bar-item w3-right">
+            <b>Welcome, {{ user.username }}!</b>
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+        <button type="submit" class="w3-button w3-red w3-round-large">Logout</button>
+            </form>
+        </div>
+        {% else %}
+        <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
+        {% endif %}
+        <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a> 
+        <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left margin-bottom w3-teal">New Chapter</a>
+        <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left margin-bottom w3-yellow">Photo-Gallery</a>
+    </div>
+   
+    <!-- Page Content -->
+    <div class="w3-container w3-padding content-container w3-blue-grey w3-round-large w3-margin-top">
+        
+     
+       {% block content %}
+        {% endblock %}
+    </div>
+<hr>
+    <!-- Footer -->
+    <footer class="w3-container w3-blue-grey w3-padding w3-margin-top">
+        <p>&copy; 2025 EasyAS International</p>
+    </footer>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'link image media code',
+            toolbar: 'undo redo | bold italic | link image | code',
+            automatic_uploads: true,
+            image_class_list: [
+                { title: 'Lightbox Image', value: 'lightbox' } // Allows images to use Lightbox
+            ]
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".chapter-content img").forEach(img => {
+                let link = document.createElement("a");
+                link.href = img.src;
+                link.setAttribute("data-lightbox", "gallery");
+                img.parentNode.insertBefore(link, img);
+                link.appendChild(img);
+            });
+        });
+    </script>
+     
+</body>
+</html>
