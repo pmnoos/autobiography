@@ -11,7 +11,8 @@ from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from .models import Chapter
 from .forms import ChapterForm  # Ensure ChapterForm exists
-
+from django.http import JsonResponse
+import language_tool_python
 
 @login_required
 def profile(request):
@@ -86,3 +87,23 @@ def upload_image(request):
         return JsonResponse({'location': f'{settings.MEDIA_URL}{saved_path}'})  # TinyMCE expects 'location' key
     
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+# Initialize the LanguageTool client
+tool = language_tool_python.LanguageTool('en-US')
+
+def check_grammar(request):
+    text = request.POST.get('text', '')  # The text to be checked
+    matches = tool.check(text)
+    
+    # Prepare the response
+    errors = []
+    for match in matches:
+        errors.append({
+            'message': match.message,
+            'error': match.replacements,
+            'offset': match.offset,
+            'length': match.errorLength
+        })
+    
+    return JsonResponse({'errors': errors})

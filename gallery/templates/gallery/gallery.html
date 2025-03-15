@@ -84,17 +84,29 @@
     </div>
 
     <script>
-        // Open lightbox with the image and title
         function openLightbox(imgSrc, title) {
-            document.getElementById("lightbox-img").src = imgSrc;
+            let img = document.getElementById("lightbox-img");
+            img.src = "";  // Clear previous image to prevent flickering
+            img.onload = function () {
+                document.getElementById("lightbox").style.display = "flex";
+            };
+            img.src = imgSrc;  // Set the new image source
             document.getElementById("lightbox-title").innerText = title;
-            document.getElementById("lightbox").style.display = "flex";
         }
-
-        // Close the lightbox
+    
+        // Close lightbox when clicking the close button or background (not the image itself)
+        document.getElementById("lightbox").addEventListener("click", function (e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    
         function closeLightbox() {
             document.getElementById("lightbox").style.display = "none";
         }
     </script>
+    </body>
+    </html>
+    
 </body>
 </html>
