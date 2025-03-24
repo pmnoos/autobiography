@@ -7,11 +7,14 @@
         .image-container {
             padding: 10px;
             text-align: center;
+            padding-left: 20px; /* Extra left spacing */
         }
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 16px;
+            max-width: 80%; /* Ensures the gallery is not too wide */
+            margin: 0 auto 0 10%; /* Adds more left margin */
         }
         .gallery-grid img {
             width: 100%;
