@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Chapter
 from .forms import ChapterForm  # Ensure ChapterForm exists
 from django.http import JsonResponse
-import language_tool_python
+
 
 @login_required
 def profile(request):
@@ -90,7 +90,7 @@ def upload_image(request):
 
 
 # Initialize the LanguageTool client
-tool = language_tool_python.LanguageTool('en-US')
+
 
 def check_grammar(request):
     text = request.POST.get('text', '')  # The text to be checked
