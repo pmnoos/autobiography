@@ -1,12 +1,14 @@
 body {
-    font-family: "Georgia", "Times New Roman", serif; /* More classic, book-like feel */
-    font-size: 20px;
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
     line-height: 1.6;
     background-color: #c0d3e5; /* Soft off-white for book-paper feel */
     color: #333; /* Dark grey for easy reading */
     padding: 20px;
 }
-
+h1, h2, h3 {
+    font-family: 'Lato', sans-serif;
+  }
 .site-header {
     text-align: center;
     padding: 30px 20px;
