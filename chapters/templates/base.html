@@ -44,26 +44,28 @@
     </div>
     {% endif %}
 
-    <!-- Navigation -->
-    <div class="w3-bar w3-blue-grey w3-padding">
-        {% if user.is_authenticated %}
-        <div class="w3-bar-item w3-right">
-            <b>Welcome, {{ user.username }}!</b>
-            <form action="{% url 'logout' %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" class="w3-button w3-red w3-round-large">Logout</button>
-            </form>
-        </div>
-        {% else %}
-        <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
-        {% endif %}
-        <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a>
-        <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">New Chapter</a>
-        <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">Photo-Gallery</a>
-        {% if user.is_staff %}
-        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-orange">Admin Panel</a>
-        {% endif %}
+   <!-- Navigation -->
+<div class="w3-bar w3-blue-grey w3-padding">
+    {% if user.is_authenticated %}
+    <div class="w3-bar-item w3-right">
+        <b>Welcome, {{ user.username }}!</b>
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="w3-button w3-red w3-round-large">Logout</button>
+        </form>
     </div>
+    {% else %}
+    <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
+    {% endif %}
+    <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a>
+    <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">New Chapter</a>
+    <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">Photo-Gallery</a>
+    {% if user.is_staff %}
+    <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-orange">Admin Panel</a>
+    <a href="{% url 'export_chapters' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-green">Download Backup</a>
+    {% endif %}
+</div>
+
 
     <!-- Page Content -->
     <div class="w3-container w3-padding content-container w3-blue-grey w3-round-large w3-margin-top">
@@ -109,8 +111,29 @@
         });
         console.log("✅ Lightbox applied to images.");
     });
-</script>
 
+</script>
+<!-- Toast Message Container -->
+<div id="toast" class="w3-hide w3-green w3-padding w3-round-large w3-animate-opacity" 
+     style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+    ✅ Backup download started!
+</div>
+<!-- Toast Trigger for Backup Button -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const backupLink = document.querySelector('a[href$="export_chapters/"]');
+        const toast = document.getElementById("toast");
+
+        if (backupLink && toast) {
+            backupLink.addEventListener("click", () => {
+                toast.classList.remove("w3-hide");
+                setTimeout(() => {
+                    toast.classList.add("w3-hide");
+                }, 3000); // Toast visible for 3 seconds
+            });
+        }
+    });
+</script>
 
 </body>
 </html>

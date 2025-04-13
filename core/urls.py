@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from chapters.views import chapter_list
+from chapters.views import chapter_list, export_chapters_json  # Ensure export_chapters_json is imported correctly
  # Ensure chapter_list is imported correctly
 
 urlpatterns = [
@@ -28,6 +28,8 @@ urlpatterns = [
     #path("accounts/", include("accounts.urls")), 
     path("gallery/", include("gallery.urls")),
     path("", chapter_list, name="chapter_list"),
+    path("export_chapters/", export_chapters_json, name="export_chapters"),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -107,3 +107,17 @@ def check_grammar(request):
         })
     
     return JsonResponse({'errors': errors})
+
+from django.http import HttpResponse
+from django.core import serializers
+from .models import Chapter  # adjust if your model is in a different app
+
+def export_chapters_json(request):
+    if not request.user.is_staff:
+        return HttpResponse("Unauthorized", status=403)
+
+    chapters = Chapter.objects.all()
+    data = serializers.serialize('json', chapters)
+    response = HttpResponse(data, content_type='application/json')
+    response['Content-Disposition'] = 'attachment; filename="chapters_backup.json"'
+    return response
