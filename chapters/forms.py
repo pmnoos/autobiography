@@ -2,23 +2,13 @@ from django import forms
 from .models import Chapter
 from tinymce.widgets import TinyMCE
 
-from django import forms
-from tinymce.widgets import TinyMCE
-from .models import Chapter
-
 class ChapterForm(forms.ModelForm):
     content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 30}))
     subtitle = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 10}), required=False)
 
     class Meta:
         model = Chapter
-        fields = ['title', 'subtitle', 'content']
-
-
-    class Meta:
-        model = Chapter
         fields = ['title', 'subtitle', 'content', 'cover_image']
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
