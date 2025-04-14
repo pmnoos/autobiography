@@ -84,3 +84,12 @@ hr {
     color: #5a0000; /* Dark red for readability */
     font-weight: bold; /* Optional: Make it stand out more */
 }
+.footer-text{
+    font-size: 0.8em;
+    color: #666; /* Dark grey for footer text */
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #f9f9f9; /* Light background for footer */
+    border-top: 1px solid #ddd; /* Subtle border for separation */
+}
