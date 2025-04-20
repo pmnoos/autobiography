@@ -121,3 +121,8 @@ def export_chapters_json(request):
     response = HttpResponse(data, content_type='application/json')
     response['Content-Disposition'] = 'attachment; filename="chapters_backup.json"'
     return response
+
+
+
+def about(request):
+    return render(request, 'chapters/about.html')
