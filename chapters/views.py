@@ -12,6 +12,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Chapter
 from .forms import ChapterForm  # Ensure ChapterForm exists
 from django.http import JsonResponse
+from django.db.models import Q
+import re
 
 
 @login_required
@@ -126,3 +128,59 @@ def export_chapters_json(request):
 
 def about(request):
     return render(request, 'chapters/about.html')
+
+def search_chapters(request):
+    query = request.GET.get('q', '')
+    chapters = Chapter.objects.none()
+    
+    if query:
+        # Check if query contains "chapter" or "ch" followed by a number
+        chapter_match = re.search(r'chapter\s*(\d+)|ch\s*(\d+)', query.lower())
+        
+        if chapter_match:
+            # Extract the chapter number
+            chapter_num = chapter_match.group(1) or chapter_match.group(2)
+            try:
+                chapter_num = int(chapter_num)
+                # Find the specific chapter by order
+                specific_chapter = Chapter.objects.filter(order=chapter_num).first()
+                if specific_chapter:
+                    # Search within that specific chapter's content
+                    chapters = Chapter.objects.filter(
+                        Q(order=chapter_num) &
+                        (Q(title__icontains=query) |
+                         Q(subtitle__icontains=query) |
+                         Q(content__icontains=query))
+                    )
+                else:
+                    # Chapter number not found, search all chapters
+                    chapters = Chapter.objects.filter(
+                        Q(title__icontains=query) |
+                        Q(subtitle__icontains=query) |
+                        Q(content__icontains=query)
+                    )
+            except ValueError:
+                # If chapter number parsing fails, do regular search
+                chapters = Chapter.objects.filter(
+                    Q(title__icontains=query) |
+                    Q(subtitle__icontains=query) |
+                    Q(content__icontains=query)
+                )
+        else:
+            # Regular search across all chapters
+            chapters = Chapter.objects.filter(
+                Q(title__icontains=query) |
+                Q(subtitle__icontains=query) |
+                Q(content__icontains=query)
+            ).order_by('order')
+    
+    # Pagination: Show 5 chapters per page
+    paginator = Paginator(chapters, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
+    return render(request, 'chapters/search_results.html', {
+        'page_obj': page_obj, 
+        'query': query,
+        'total_results': chapters.count()
+    })

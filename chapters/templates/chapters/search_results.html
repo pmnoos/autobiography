@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Search Results{% if query %} for "{{ query }}"{% endif %}</h2>
+<a href="{% url 'chapter_list' %}" class="btn btn-secondary mb-3">Back to All Chapters</a>
+
+<!-- Search Tips -->
+<div class="alert alert-info">
+    <strong>Search Tips:</strong>
+    <ul class="mb-0">
+        <li>Search by chapter: "Chapter 5" or "Ch 3"</li>
+        <li>Search by content: "London" or "university"</li>
+        <li>Search by title: "My First Job"</li>
+    </ul>
+</div>
+
+{% if page_obj and page_obj.object_list %}
+    <p class="text-muted">Found {{ total_results }} result{{ total_results|pluralize }}.</p>
+    
+    <ul class="w3-ul w3-border">
+        {% for chapter in page_obj %}
+            <li>
+                <strong>Chapter {{ chapter.order }}:</strong> 
+                <a href="{% url 'chapter_detail' slug=chapter.slug %}">{{ chapter.title }}</a>
+                {% if chapter.subtitle %}
+                    <br><small class="text-muted">{{ chapter.subtitle }}</small>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- Pagination controls -->
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?q={{ query }}&page=1">&laquo; first</a>
+            <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">next</a>
+            <a href="?q={{ query }}&page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </div>
+{% else %}
+    <div class="alert alert-warning">
+        <p>No chapters found matching your search.</p>
+        <p><strong>Try:</strong></p>
+        <ul>
+            <li>Different keywords</li>
+            <li>Chapter numbers (e.g., "Chapter 1")</li>
+            <li>Place names or events</li>
+        </ul>
+    </div>
+{% endif %}
+{% endblock %} 

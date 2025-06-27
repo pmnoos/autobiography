@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Search Form -->
+<form method="get" action="{% url 'search_chapters' %}" class="mb-3">
+    <input type="text" name="q" placeholder="Search chapters..." class="form-control d-inline-block w-auto" style="max-width: 300px;" />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 <h2>All Chapters</h2>
 <a href="{% url 'new_chapter' %}" class="w3-btn btn-primary w3-margin-bottom">Create New Chapter</a>
 

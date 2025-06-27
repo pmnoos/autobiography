@@ -31,3 +31,6 @@ media/
 *.egg-info/
 build/
 dist/
+
+# Temporary files
+.tmp.driveupload/

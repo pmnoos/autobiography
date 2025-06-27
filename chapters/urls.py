@@ -6,7 +6,8 @@ from django.contrib import admin
 
 from .views import (
     profile, upload_image, new_chapter, chapter_list, 
-    chapter_detail, edit_chapter, check_grammar, about
+    chapter_detail, edit_chapter, check_grammar, about,
+    search_chapters
 )
 
 urlpatterns = [
@@ -33,6 +34,9 @@ urlpatterns = [
 
     # Grammar Check API
     path("check_grammar/", check_grammar, name="check_grammar"),  # Changed hyphen to underscore
+
+    # Search
+    path('search/', search_chapters, name='search_chapters'),
 ]
 
 # Serve media files in development mode

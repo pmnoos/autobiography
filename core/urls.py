@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('chapters/', include('chapters.urls')),
     #path("accounts/", include("accounts.urls")), 
-    path("gallery/", include("gallery.urls")),
+    path("gallery/", include(("gallery.urls", "gallery"), namespace="gallery")),
     path("", chapter_list, name="chapter_list"),
     path("export_chapters/", export_chapters_json, name="export_chapters"),
 
