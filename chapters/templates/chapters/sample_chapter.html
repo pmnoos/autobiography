@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sample Chapter - {{ SITE_TITLE }}{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-padding">
+    <div class="w3-card-4 w3-white w3-round-large w3-padding">
+        <h1 class="w3-center w3-text-blue-grey">Sample Chapter: My Early Years</h1>
+        
+        <div class="w3-panel w3-blue-grey w3-round-large w3-padding">
+            <h3>This is a sample chapter to demonstrate the autobiography template.</h3>
+            <p>In commercial mode, this would be replaced with the user's actual content.</p>
+        </div>
+
+        <div class="chapter-content w3-padding">
+            <h2>Chapter 1: The Beginning</h2>
+            
+            <p>This is where your story begins. Every life has a starting point, and this is yours. 
+            You can write about your earliest memories, your family background, or the place where you were born.</p>
+            
+            <p>Feel free to include details about:</p>
+            <ul>
+                <li>Your birthplace and early home</li>
+                <li>Your family members and their influence</li>
+                <li>Early memories that shaped who you are</li>
+                <li>Childhood dreams and aspirations</li>
+            </ul>
+            
+            <h3>Adding Images</h3>
+            <p>You can include images in your chapters by uploading them through the gallery and then referencing them in your text.</p>
+            
+            <div class="w3-panel w3-light-grey w3-round-large w3-padding">
+                <h4>Writing Tips:</h4>
+                <ul>
+                    <li>Be honest and authentic in your writing</li>
+                    <li>Include specific details and sensory descriptions</li>
+                    <li>Don't worry about perfect grammar - focus on telling your story</li>
+                    <li>Write as if you're talking to a close friend</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="w3-panel w3-center w3-padding">
+            <a href="{% url 'chapter_list' %}" class="w3-button w3-blue-grey w3-round-large">Back to Chapters</a>
+            <a href="{% url 'new_chapter' %}" class="w3-button w3-teal w3-round-large w3-margin-left">Create Your First Chapter</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

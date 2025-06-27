@@ -29,9 +29,9 @@
 
     <!-- Header Section -->
     <header class="site-header w3-blue-grey">
-        <h1 class="title">The Story of an Ordinary Man with an Extra-ordinary Life</h1>
+        <h1 class="title">{{ SITE_SUBTITLE }}</h1>
         <img src="{% static 'images/P in Positano.jpg' %}" alt="Header Image" class="header-image">
-        <h2 class="subtitle">Through the simplicity of my existence, I unearthed the profound truth <br> that to love and to be loved is the greatest adventure of all...</h2>
+        <h2 class="subtitle">{{ SITE_DESCRIPTION }}</h2>
     </header>
 
     {% if messages %}
@@ -95,8 +95,7 @@
             
             <!-- Signature -->
             <p class="w3-medium w3-opacity" style="text-align: center;">
-                <em>Thanks for sticking around — you deserve a medal... or at least a cup of tea,</em>
-                <strong>Peter</strong>
+                <em>{{ AUTHOR_SIGNATURE }}</em>
             </p>
             
             <!-- Copyright --><a href="{% url 'about' %}" class="w3-bar-item w3-button">About</a>

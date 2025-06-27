@@ -50,6 +50,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.template_settings',
             ],
         },
     },
@@ -113,6 +114,17 @@ TINYMCE_DEFAULT_CONFIG = {
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
+
+# Commercial Template Configuration
+# Set to True to enable commercial template mode (removes personal content)
+COMMERCIAL_MODE = os.getenv('COMMERCIAL_MODE', 'False').lower() == 'true'
+
+# Template customization settings
+SITE_TITLE = os.getenv('SITE_TITLE', 'MyStory')
+SITE_SUBTITLE = os.getenv('SITE_SUBTITLE', 'The Story of an Ordinary Man with an Extra-ordinary Life')
+SITE_DESCRIPTION = os.getenv('SITE_DESCRIPTION', 'Through the simplicity of my existence, I unearthed the profound truth that to love and to be loved is the greatest adventure of all...')
+AUTHOR_NAME = os.getenv('AUTHOR_NAME', 'Peter')
+AUTHOR_SIGNATURE = os.getenv('AUTHOR_SIGNATURE', 'Thanks for sticking around — you deserve a medal... or at least a cup of tea, Peter')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

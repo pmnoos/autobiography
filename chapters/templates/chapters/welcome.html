@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Welcome to {{ SITE_TITLE }}{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-padding">
+    <div class="w3-card-4 w3-white w3-round-large w3-padding">
+        <h1 class="w3-center w3-text-blue-grey">Welcome to Your Autobiography</h1>
+        
+        <div class="w3-panel w3-blue-grey w3-round-large w3-padding">
+            <h3>Start Writing Your Life Story</h3>
+            <p>This is your personal space to document your life's journey, memories, and experiences. 
+            Create chapters, add photos, and build a lasting legacy for future generations.</p>
+        </div>
+
+        <div class="w3-row-padding w3-margin-top">
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-card w3-blue-grey w3-round-large w3-padding">
+                    <h3>📝 Write Chapters</h3>
+                    <p>Create chapters about different periods of your life, important events, or meaningful experiences.</p>
+                    <a href="{% url 'new_chapter' %}" class="w3-button w3-white w3-round-large">Start Writing</a>
+                </div>
+            </div>
+            
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-card w3-teal w3-round-large w3-padding">
+                    <h3>📸 Add Photos</h3>
+                    <p>Upload and organize photos that complement your stories and bring your memories to life.</p>
+                    <a href="{% url 'gallery:upload_image' %}" class="w3-button w3-white w3-round-large">Upload Images</a>
+                </div>
+            </div>
+            
+            <div class="w3-col m4 w3-margin-bottom">
+                <div class="w3-card w3-yellow w3-round-large w3-padding">
+                    <h3>🔍 Browse Gallery</h3>
+                    <p>View all your uploaded photos in an organized gallery, perfect for reminiscing and sharing.</p>
+                    <a href="{% url 'gallery' %}" class="w3-button w3-white w3-round-large">View Gallery</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-panel w3-light-grey w3-round-large w3-padding w3-margin-top">
+            <h4>Getting Started Tips:</h4>
+            <ul>
+                <li><strong>Start Simple:</strong> Begin with one chapter about your earliest memories</li>
+                <li><strong>Be Authentic:</strong> Write in your own voice - don't worry about being perfect</li>
+                <li><strong>Include Details:</strong> Add specific dates, places, and people's names</li>
+                <li><strong>Add Photos:</strong> Include images that relate to your stories</li>
+                <li><strong>Take Your Time:</strong> This is a journey, not a race - write when you feel inspired</li>
+            </ul>
+        </div>
+
+        <div class="w3-panel w3-center w3-padding">
+            <a href="{% url 'new_chapter' %}" class="w3-button w3-blue-grey w3-round-large w3-large">Create Your First Chapter</a>
+        </div>
+    </div>
+</div>
+{% endblock %} 

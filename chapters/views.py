@@ -24,6 +24,10 @@ def profile(request):
 def chapter_list(request):
     chapters = Chapter.objects.all().order_by('order')  # ✅ Sort by order field
 
+    # In commercial mode, show welcome page if no chapters exist
+    if getattr(settings, 'COMMERCIAL_MODE', False) and not chapters.exists():
+        return render(request, 'chapters/welcome.html')
+
     # Pagination: Show 5 chapters per page
     paginator = Paginator(chapters, 5)
     page_number = request.GET.get('page')
