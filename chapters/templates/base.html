@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}MyStory{% endblock %}</title>
+    <title>{% block title %}Personal Autobiography App{% endblock %}</title>
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
     <!-- ✅ Google Fonts & W3.CSS -->
@@ -28,10 +28,12 @@
 <body class="w3-light-grey">
 
     <!-- Header Section -->
-    <header class="site-header w3-blue-grey">
-        <h1 class="title">The Story of an Ordinary Man with an Extra-ordinary Life</h1>
-        <img src="{% static 'images/P in Positano.jpg' %}" alt="Header Image" class="header-image">
-        <h2 class="subtitle">Through the simplicity of my existence, I unearthed the profound truth <br> that to love and to be loved is the greatest adventure of all...</h2>
+    <header class="site-header w3-blue-grey" style="background: linear-gradient(135deg, #607d8b 0%, #455a64 100%); padding: 40px 20px; text-align: center;">
+        <h1 class="title">Your Life Story - Beautifully Told</h1>
+        <div style="width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 40px; color: white;">
+            ✍️
+        </div>
+        <h2 class="subtitle">Create, organize, and share your personal autobiography with chapters, photos, and memories.<br>Turn your life experiences into a beautiful digital legacy.</h2>
     </header>
 
     {% if messages %}
@@ -82,12 +84,13 @@
         <div class="w3-content" style="max-width: 600px; margin: 0 auto; text-align: center;">
             
             <!-- Author Photo -->
-            <img src="{% static 'images/favicon.ico' %}" alt="Author Photo"
-                 class="w3-circle" style="width:80px;height:80px;object-fit:cover;border:2px solid white; margin: 0 auto;">
+            <div class="w3-circle" style="width:80px;height:80px;background-color:#607d8b;border:2px solid white; margin: 0 auto;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;font-weight:bold;">
+                📖
+            </div>
             
             <!-- Quote -->
             <p class="w3-medium w3-margin-top w3-opacity" style="margin-top: 12px; text-align: center;">
-                <em>"Every life holds a story. Mine just happens to be written here."</em>
+                <em>"Every life is a story worth telling. Start writing yours today."</em>
             </p>
             
             <!-- Decorative Line -->
@@ -95,8 +98,7 @@
             
             <!-- Signature -->
             <p class="w3-medium w3-opacity" style="text-align: center;">
-                <em>Thanks for sticking around — you deserve a medal... or at least a cup of tea,</em>
-                <strong>Peter</strong>
+                <em>Share your journey, preserve your memories, inspire others.</em>
             </p>
             
             <!-- Copyright --><a href="{% url 'about' %}" class="w3-bar-item w3-button">About</a>
