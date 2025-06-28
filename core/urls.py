@@ -18,18 +18,29 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
-from chapters.views import chapter_list, export_chapters_json  # Ensure export_chapters_json is imported correctly
+from chapters.views import chapter_list, export_chapters_json, set_language_custom, test_view, landing_page, contact  # Ensure export_chapters_json is imported correctly
  # Ensure chapter_list is imported correctly
 
 urlpatterns = [
+    path('set_language/', set_language_custom, name='set_language'),
+    path('test/', test_view, name='test'),
     path('admin/', admin.site.urls),
     path('chapters/', include('chapters.urls')),
+    path("export_chapters/", export_chapters_json, name="export_chapters"),
     #path("accounts/", include("accounts.urls")), 
     path("gallery/", include(("gallery.urls", "gallery"), namespace="gallery")),
-    path("", chapter_list, name="chapter_list"),
-    path("export_chapters/", export_chapters_json, name="export_chapters"),
-
+    path("", landing_page, name="landing"),  # Landing page as homepage
+    path("home/", chapter_list, name="home"),  # Chapter list as /home/
+    path("contact/", contact, name="contact"),  # Contact form
+    # Authentication URLs
+    path("login/", auth_views.LoginView.as_view(), name="login"),
+    path("logout/", auth_views.LogoutView.as_view(next_page='login', http_method_names=['get', 'post']), name="logout"),
+    path("password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"),
+    path("password_reset/done/", auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

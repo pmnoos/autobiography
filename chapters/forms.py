@@ -17,3 +17,22 @@ class ChapterForm(forms.ModelForm):
         self.fields['subtitle'].widget.attrs.update({'class': input_class})
         self.fields['content'].widget.attrs.update({'class': input_class})
         self.fields['cover_image'].widget.attrs.update({'class': input_class})
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={
+        'class': 'w3-input w3-border w3-round-large',
+        'placeholder': 'Your Name'
+    }))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'w3-input w3-border w3-round-large',
+        'placeholder': 'Your Email'
+    }))
+    subject = forms.CharField(max_length=200, widget=forms.TextInput(attrs={
+        'class': 'w3-input w3-border w3-round-large',
+        'placeholder': 'Subject'
+    }))
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'w3-input w3-border w3-round-large',
+        'rows': 5,
+        'placeholder': 'Your Message'
+    }))

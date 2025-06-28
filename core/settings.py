@@ -50,6 +50,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'core.context_processors.translations',
             ],
         },
     },
@@ -75,8 +76,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
-USE_I18N = True
+USE_I18N = False  # Disable Django's built-in internationalization
+USE_L10N = False  # Disable Django's built-in localization
 USE_TZ = True
+
+# Available languages (for our custom system)
+LANGUAGES = [
+    ('en', 'English'),
+    ('es', 'Español'),
+    ('fr', 'Français'),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 # Static and Media files
 STATIC_URL = '/static/'

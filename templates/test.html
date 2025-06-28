@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+</head>
+<body>
+    <h1>Test Page</h1>
+    <p>Message: {{ test_message }}</p>
+    <p>Language: {{ current_language }}</p>
+    <p>Translation Test: {{ t.home|default:"NO TRANSLATION" }}</p>
+    <p>User: {{ user.username|default:"NOT LOGGED IN" }}</p>
+    
+    <h2>Navigation Test</h2>
+    <a href="{% url 'chapter_list' %}">Chapter List</a>
+    <a href="{% url 'home' %}">Home</a>
+</body>
+</html> 

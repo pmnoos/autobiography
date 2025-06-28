@@ -10,11 +10,68 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.contrib.auth.decorators import login_required
 from .models import Chapter
-from .forms import ChapterForm  # Ensure ChapterForm exists
+from .forms import ChapterForm, ContactForm  # Ensure ChapterForm exists
 from django.http import JsonResponse
 from django.db.models import Q
 import re
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
+# Simple translation dictionary
+TRANSLATIONS = {
+    'en': {
+        'home': 'Home',
+        'getting_started': 'Getting Started',
+        'new_chapter': 'New Chapter',
+        'photo_gallery': 'Photo Gallery',
+        'upload_images': 'Upload Images',
+        'admin_panel': 'Admin Panel',
+        'download_backup': 'Download Backup',
+        'login': 'Login',
+        'logout': 'Logout',
+        'welcome': 'Welcome',
+        'your_life_story': 'Your Life Story - Beautifully Told',
+        'subtitle': 'Create, organize, and share your personal autobiography with chapters, photos, and memories. Turn your life experiences into a beautiful digital legacy.',
+        'footer_quote': 'Every life is a story worth telling. Start writing yours today.',
+        'footer_signature': 'Share your journey, preserve your memories, inspire others.',
+    },
+    'es': {
+        'home': 'Inicio',
+        'getting_started': 'Comenzar',
+        'new_chapter': 'Nuevo Capítulo',
+        'photo_gallery': 'Galería de Fotos',
+        'upload_images': 'Subir Imágenes',
+        'admin_panel': 'Panel de Administración',
+        'download_backup': 'Descargar Respaldo',
+        'login': 'Iniciar Sesión',
+        'logout': 'Cerrar Sesión',
+        'welcome': 'Bienvenido',
+        'your_life_story': 'Tu Historia de Vida - Hermosamente Contada',
+        'subtitle': 'Crea, organiza y comparte tu autobiografía personal con capítulos, fotos y recuerdos. Convierte tus experiencias de vida en un hermoso legado digital.',
+        'footer_quote': 'Cada vida es una historia que vale la pena contar. Comienza a escribir la tuya hoy.',
+        'footer_signature': 'Comparte tu viaje, preserva tus recuerdos, inspira a otros.',
+    },
+    'fr': {
+        'home': 'Accueil',
+        'getting_started': 'Commencer',
+        'new_chapter': 'Nouveau Chapitre',
+        'photo_gallery': 'Galerie Photos',
+        'upload_images': 'Télécharger Images',
+        'admin_panel': 'Panneau Admin',
+        'download_backup': 'Télécharger Sauvegarde',
+        'login': 'Connexion',
+        'logout': 'Déconnexion',
+        'welcome': 'Bienvenue',
+        'your_life_story': 'Votre Histoire de Vie - Magnifiquement Racontee',
+        'subtitle': 'Créez, organisez et partagez votre autobiographie personnelle avec des chapitres, des photos et des souvenirs. Transformez vos expériences de vie en un magnifique héritage numérique.',
+        'footer_quote': 'Chaque vie est une histoire qui mérite d\'être racontée. Commencez à écrire la vôtre aujourd\'hui.',
+        'footer_signature': 'Partagez votre voyage, préservez vos souvenirs, inspirez les autres.',
+    }
+}
+
+def get_translation(key, language='en'):
+    """Get translation for a given key and language"""
+    return TRANSLATIONS.get(language, TRANSLATIONS['en']).get(key, key)
 
 @login_required
 def profile(request):
@@ -187,3 +244,41 @@ def search_chapters(request):
         'query': query,
         'total_results': chapters.count()
     })
+
+def set_language_custom(request):
+    """Custom language switching view"""
+    if request.method == 'POST':
+        language = request.POST.get('language', 'en')
+        if language in TRANSLATIONS:
+            request.session['django_language'] = language
+            # Force session save
+            request.session.modified = True
+        next_url = request.POST.get('next', '/')
+        return HttpResponseRedirect(next_url)
+    return HttpResponseRedirect('/')
+
+def test_view(request):
+    """Simple test view to debug template rendering"""
+    context = {
+        'test_message': 'Hello World!',
+        'current_language': request.session.get('django_language', 'en'),
+    }
+    return render(request, 'test.html', context)
+
+def landing_page(request):
+    """Landing page view for marketing and demo purposes"""
+    return render(request, 'landing.html')
+
+def contact(request):
+    """Contact form view"""
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Here you would typically send an email or save to database
+            # For now, we'll just show a success message
+            messages.success(request, 'Thank you for your message! We will get back to you soon.')
+            return redirect('landing')
+    else:
+        form = ContactForm()
+    
+    return render(request, 'landing.html', {'contact_form': form})
