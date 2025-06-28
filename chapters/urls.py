@@ -7,7 +7,7 @@ from django.contrib import admin
 from .views import (
     profile, upload_image, new_chapter, chapter_list, 
     chapter_detail, edit_chapter, check_grammar, about,
-    search_chapters
+    search_chapters, getting_started
 )
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path("chapter/<slug:slug>/", chapter_detail, name="chapter_detail"),
     path("chapter/<slug:slug>/edit/", edit_chapter, name="edit_chapter"),
     path('about/', about, name='about'),
+    path('getting-started/', getting_started, name='getting_started'),
     # Image Upload
     path("upload_image/", upload_image, name="upload_image"),
 

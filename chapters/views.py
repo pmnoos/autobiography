@@ -129,6 +129,9 @@ def export_chapters_json(request):
 def about(request):
     return render(request, 'chapters/about.html')
 
+def getting_started(request):
+    return render(request, 'chapters/getting_started.html')
+
 def search_chapters(request):
     query = request.GET.get('q', '')
     chapters = Chapter.objects.none()

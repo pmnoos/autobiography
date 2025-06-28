@@ -60,6 +60,7 @@
     <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
     {% endif %}
     <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a>
+    <a href="{% url 'getting_started' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-indigo">Getting Started</a>
     <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">New Chapter</a>
     <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">Photo-Gallery</a>
     {% if user.is_authenticated %}

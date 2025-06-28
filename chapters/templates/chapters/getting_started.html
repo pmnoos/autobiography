@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}Getting Started - Personal Autobiography App{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-padding">
+    <h1 class="w3-center w3-text-blue-grey">Getting Started with Your Autobiography</h1>
+    
+    <div class="w3-row-padding w3-margin-top">
+        <!-- Quick Start Section -->
+        <div class="w3-col l6 w3-margin-bottom">
+            <div class="w3-card w3-white w3-padding w3-round-large">
+                <h3 class="w3-text-blue-grey">🚀 Quick Start Guide</h3>
+                <ol class="w3-left-align">
+                    <li><strong>Login</strong> - Use the login button in the navigation</li>
+                    <li><strong>Create Your First Chapter</strong> - Click "New Chapter" in the navigation</li>
+                    <li><strong>Add Content</strong> - Use the rich text editor to write your story</li>
+                    <li><strong>Upload Photos</strong> - Go to "Upload Images" to add pictures</li>
+                    <li><strong>Organize</strong> - Use the order field to arrange chapters chronologically</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="w3-col l6 w3-margin-bottom">
+            <div class="w3-card w3-white w3-padding w3-round-large">
+                <h3 class="w3-text-blue-grey">✨ Key Features</h3>
+                <ul class="w3-left-align">
+                    <li><strong>Rich Text Editor</strong> - Format your content beautifully</li>
+                    <li><strong>Photo Gallery</strong> - Upload and display images</li>
+                    <li><strong>Search Function</strong> - Find specific content easily</li>
+                    <li><strong>Mobile Friendly</strong> - Works on all devices</li>
+                    <li><strong>Export/Backup</strong> - Download your content as backup</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Instructions -->
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-col l12">
+            <div class="w3-card w3-white w3-padding w3-round-large">
+                <h3 class="w3-text-blue-grey">📖 Detailed Instructions</h3>
+                
+                <h4 class="w3-text-blue-grey">Creating Your First Chapter</h4>
+                <div class="w3-panel w3-light-grey w3-leftbar w3-border-blue-grey">
+                    <p><strong>Step 1:</strong> Click "New Chapter" in the navigation bar</p>
+                    <p><strong>Step 2:</strong> Fill in the chapter details:</p>
+                    <ul>
+                        <li><strong>Title:</strong> Give your chapter a meaningful title</li>
+                        <li><strong>Subtitle:</strong> Add a brief description</li>
+                        <li><strong>Content:</strong> Write your story using the rich text editor</li>
+                        <li><strong>Order:</strong> Set the sequence (1, 2, 3, etc.)</li>
+                        <li><strong>Slug:</strong> This creates the URL (auto-generated from title)</li>
+                    </ul>
+                    <p><strong>Step 3:</strong> Click "Save" to create your chapter</p>
+                </div>
+
+                <h4 class="w3-text-blue-grey">Adding Photos to Your Gallery</h4>
+                <div class="w3-panel w3-light-grey w3-leftbar w3-border-blue-grey">
+                    <p><strong>Step 1:</strong> Click "Upload Images" in the navigation</p>
+                    <p><strong>Step 2:</strong> Fill in the image details:</p>
+                    <ul>
+                        <li><strong>Image:</strong> Select a photo from your device</li>
+                        <li><strong>Title:</strong> Give your image a title</li>
+                        <li><strong>Description:</strong> Add context about the photo</li>
+                        <li><strong>Chapter:</strong> Link to a specific chapter (optional)</li>
+                        <li><strong>Date Taken:</strong> When the photo was taken (optional)</li>
+                    </ul>
+                    <p><strong>Step 3:</strong> Click "Upload" to add the image</p>
+                </div>
+
+                <h4 class="w3-text-blue-grey">Managing Your Content</h4>
+                <div class="w3-panel w3-light-grey w3-leftbar w3-border-blue-grey">
+                    <p><strong>Admin Panel:</strong> Access advanced features through the admin panel</p>
+                    <ul>
+                        <li>Edit existing chapters and images</li>
+                        <li>Delete content you no longer want</li>
+                        <li>Manage user accounts</li>
+                        <li>Export your content as backup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tips Section -->
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-col l12">
+            <div class="w3-card w3-white w3-padding w3-round-large">
+                <h3 class="w3-text-blue-grey">💡 Pro Tips</h3>
+                <div class="w3-row-padding">
+                    <div class="w3-col l6">
+                        <h4 class="w3-text-blue-grey">Content Organization</h4>
+                        <ul>
+                            <li>Use chronological order for chapters</li>
+                            <li>Add meaningful titles and subtitles</li>
+                            <li>Include dates and locations</li>
+                            <li>Link photos to relevant chapters</li>
+                        </ul>
+                    </div>
+                    <div class="w3-col l6">
+                        <h4 class="w3-text-blue-grey">Writing Tips</h4>
+                        <ul>
+                            <li>Start with key life events</li>
+                            <li>Include personal reflections</li>
+                            <li>Add family stories and memories</li>
+                            <li>Use the rich text editor for formatting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="w3-center w3-margin-top">
+        <a href="{% url 'new_chapter' %}" class="w3-button w3-blue-grey w3-round-large w3-margin">
+            <i class="fa fa-plus"></i> Create Your First Chapter
+        </a>
+        <a href="{% url 'gallery:upload_image' %}" class="w3-button w3-teal w3-round-large w3-margin">
+            <i class="fa fa-image"></i> Upload Your First Photo
+        </a>
+        <a href="{% url 'admin:index' %}" class="w3-button w3-orange w3-round-large w3-margin">
+            <i class="fa fa-cog"></i> Access Admin Panel
+        </a>
+    </div>
+
+    <!-- Help Section -->
+    <div class="w3-row-padding w3-margin-top">
+        <div class="w3-col l12">
+            <div class="w3-card w3-blue-grey w3-padding w3-round-large">
+                <h3 class="w3-text-white">❓ Need Help?</h3>
+                <p class="w3-text-white">If you need assistance or have questions:</p>
+                <ul class="w3-text-white">
+                    <li>Check the <a href="https://github.com/yourusername/autobiography" class="w3-text-yellow">GitHub repository</a> for documentation</li>
+                    <li>Review the README file for detailed setup instructions</li>
+                    <li>Contact the development team for support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
