@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-</form>
+<div class="w3-container w3-padding">
+    <h2 class="w3-center w3-text-blue-grey">Login</h2>
+    
+    <!-- Default Credentials Notice -->
+    <div class="w3-panel w3-yellow w3-round-large w3-margin-bottom">
+        <h4 class="w3-text-dark-grey">🔑 New User? Try the default credentials:</h4>
+        <div class="w3-panel w3-light-yellow w3-leftbar w3-border-yellow">
+            <p><strong>Username:</strong> demo</p>
+            <p><strong>Password:</strong> demo123</p>
+        </div>
+        <p class="w3-text-dark-grey w3-small">
+            <strong>⚠️ Security:</strong> Change these credentials immediately after first login!
+        </p>
+    </div>
+    
+    <div class="w3-card w3-white w3-padding w3-round-large">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="w3-button w3-blue-grey w3-round-large w3-margin-top">Login</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

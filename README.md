@@ -51,12 +51,18 @@ A beautiful, feature-rich Django application for creating and sharing personal a
    python manage.py createsuperuser
    ```
 
-6. **Run the development server**
+6. **Set up default login credentials (optional)**
+   ```bash
+   python manage.py setup_default_user
+   ```
+   This creates a demo account with username: `demo`, password: `demo123`
+
+7. **Run the development server**
    ```bash
    python manage.py runserver
    ```
 
-7. **Access the application**
+8. **Access the application**
    - Main site: http://127.0.0.1:8000/
    - Admin panel: http://127.0.0.1:8000/admin/
 
@@ -70,14 +76,26 @@ A beautiful, feature-rich Django application for creating and sharing personal a
    ```
    This creates 5 sample chapters to showcase the app's capabilities.
 
-2. **Customize the site**:
+2. **Set up default login** (optional):
+   ```bash
+   python manage.py setup_default_user
+   ```
+   This creates a demo account (username: `demo`, password: `demo123`) for easy access.
+
+3. **Customize the site**:
    - Edit `chapters/templates/base.html` to change the title, subtitle, and branding
    - Update the footer information in the same file
    - Modify sample content through the admin panel
 
 ### For Personal Use
 
-1. **Create your first chapter**:
+1. **Change default credentials** (if using demo account):
+   - Log in with the demo credentials
+   - Go to Admin Panel → Users → Edit the demo user
+   - Change username, email, and password
+   - Or create a new superuser and delete the demo account
+
+2. **Create your first chapter**:
    - Log in to the admin panel
    - Go to "Chapters" → "Add Chapter"
    - Fill in the title, subtitle, and content
