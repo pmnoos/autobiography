@@ -24,10 +24,22 @@ def profile(request):
 def chapter_list(request):
     chapters = Chapter.objects.all().order_by('order')  # ✅ Sort by order field
 
-    # In commercial mode, show welcome page if no chapters exist
-    if getattr(settings, 'COMMERCIAL_MODE', False) and not chapters.exists():
+    # In commercial mode, always show welcome page for the main landing
+    if getattr(settings, 'COMMERCIAL_MODE', False):
         return render(request, 'chapters/welcome.html')
 
+    # Pagination: Show 5 chapters per page
+    paginator = Paginator(chapters, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'chapters/chapter_list.html', {'page_obj': page_obj})
+
+
+def chapters_list(request):
+    """Separate view for displaying chapters list in commercial mode"""
+    chapters = Chapter.objects.all().order_by('order')
+    
     # Pagination: Show 5 chapters per page
     paginator = Paginator(chapters, 5)
     page_number = request.GET.get('page')
@@ -95,24 +107,14 @@ def upload_image(request):
     return JsonResponse({'error': 'Invalid request'}, status=400)
 
 
-# Initialize the LanguageTool client
-
-
+# Grammar check functionality (placeholder for future implementation)
 def check_grammar(request):
-    text = request.POST.get('text', '')  # The text to be checked
-    matches = tool.check(text)
-    
-    # Prepare the response
-    errors = []
-    for match in matches:
-        errors.append({
-            'message': match.message,
-            'error': match.replacements,
-            'offset': match.offset,
-            'length': match.errorLength
-        })
-    
-    return JsonResponse({'errors': errors})
+    """
+    Placeholder for grammar checking functionality.
+    This can be implemented later with a grammar checking service.
+    """
+    return JsonResponse({'errors': []})
+
 
 from django.http import HttpResponse
 from django.core import serializers

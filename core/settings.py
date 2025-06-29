@@ -117,14 +117,14 @@ LOGIN_REDIRECT_URL = "/"
 
 # Commercial Template Configuration
 # Set to True to enable commercial template mode (removes personal content)
-COMMERCIAL_MODE = os.getenv('COMMERCIAL_MODE', 'False').lower() == 'true'
+COMMERCIAL_MODE = os.getenv('COMMERCIAL_MODE', 'True').lower() == 'true'
 
 # Template customization settings
-SITE_TITLE = os.getenv('SITE_TITLE', 'MyStory')
-SITE_SUBTITLE = os.getenv('SITE_SUBTITLE', 'The Story of an Ordinary Man with an Extra-ordinary Life')
-SITE_DESCRIPTION = os.getenv('SITE_DESCRIPTION', 'Through the simplicity of my existence, I unearthed the profound truth that to love and to be loved is the greatest adventure of all...')
-AUTHOR_NAME = os.getenv('AUTHOR_NAME', 'Peter')
-AUTHOR_SIGNATURE = os.getenv('AUTHOR_SIGNATURE', 'Thanks for sticking around — you deserve a medal... or at least a cup of tea, Peter')
+SITE_TITLE = os.getenv('SITE_TITLE', 'My Life Story')
+SITE_SUBTITLE = os.getenv('SITE_SUBTITLE', 'The Story of My Life')
+SITE_DESCRIPTION = os.getenv('SITE_DESCRIPTION', 'Welcome to my personal autobiography')
+AUTHOR_NAME = os.getenv('AUTHOR_NAME', 'Your Name')
+AUTHOR_SIGNATURE = os.getenv('AUTHOR_SIGNATURE', 'Thanks for reading my story, Your Name')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

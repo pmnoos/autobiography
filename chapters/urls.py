@@ -2,16 +2,14 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
 
 from .views import (
-    profile, upload_image, new_chapter, chapter_list, 
+    profile, upload_image, new_chapter, chapter_list, chapters_list,
     chapter_detail, edit_chapter, check_grammar, about,
     search_chapters
 )
 
 urlpatterns = [
-    path("admin/", admin.site.urls),  # Admin panel
     path("login/", auth_views.LoginView.as_view(), name="login"),
     path("logout/", auth_views.LogoutView.as_view(next_page='login'), name="logout"),
     
@@ -23,6 +21,7 @@ urlpatterns = [
     # Chapters
     path("chapter/new/", new_chapter, name="new_chapter"),
     path("", chapter_list, name="chapter_list"),
+    path("chapters/", chapters_list, name="chapters_list"),
     path("chapter/<slug:slug>/", chapter_detail, name="chapter_detail"),
     path("chapter/<slug:slug>/edit/", edit_chapter, name="edit_chapter"),
     path('about/', about, name='about'),

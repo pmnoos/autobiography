@@ -4,56 +4,193 @@
 {% block title %}Welcome to {{ SITE_TITLE }}{% endblock %}
 
 {% block content %}
-<div class="w3-container w3-padding">
-    <div class="w3-card-4 w3-white w3-round-large w3-padding">
-        <h1 class="w3-center w3-text-blue-grey">Welcome to Your Autobiography</h1>
-        
-        <div class="w3-panel w3-blue-grey w3-round-large w3-padding">
-            <h3>Start Writing Your Life Story</h3>
-            <p>This is your personal space to document your life's journey, memories, and experiences. 
-            Create chapters, add photos, and build a lasting legacy for future generations.</p>
+<!-- Hero Section -->
+<div class="w3-container w3-padding-large" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+    <div class="w3-card-4 w3-white w3-round-large w3-padding-large" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; max-width: 900px; width: 100%; text-align: center;">
+        <h1 class="w3-xxlarge w3-text-white" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+            📖 {{ SITE_TITLE }}
+        </h1>
+        <h2 class="w3-large w3-text-white" style="margin-top: 20px;">
+            {{ SITE_DESCRIPTION }}
+        </h2>
+        <p class="w3-large w3-text-white" style="margin-top: 30px; line-height: 1.6; text-align: center;">
+            Preserve your life's journey in a beautiful, digital autobiography. Share your stories, 
+            memories, and experiences with future generations through an elegant, easy-to-use platform.
+        </p>
+        <div class="w3-padding-large">
+            <i class="fa fa-book" style="font-size: 120px; opacity: 0.8;"></i>
         </div>
-
-        <div class="w3-row-padding w3-margin-top">
-            <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-card w3-blue-grey w3-round-large w3-padding">
-                    <h3>📝 Write Chapters</h3>
-                    <p>Create chapters about different periods of your life, important events, or meaningful experiences.</p>
-                    <a href="{% url 'new_chapter' %}" class="w3-button w3-white w3-round-large">Start Writing</a>
-                </div>
-            </div>
-            
-            <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-card w3-teal w3-round-large w3-padding">
-                    <h3>📸 Add Photos</h3>
-                    <p>Upload and organize photos that complement your stories and bring your memories to life.</p>
-                    <a href="{% url 'gallery:upload_image' %}" class="w3-button w3-white w3-round-large">Upload Images</a>
-                </div>
-            </div>
-            
-            <div class="w3-col m4 w3-margin-bottom">
-                <div class="w3-card w3-yellow w3-round-large w3-padding">
-                    <h3>🔍 Browse Gallery</h3>
-                    <p>View all your uploaded photos in an organized gallery, perfect for reminiscing and sharing.</p>
-                    <a href="{% url 'gallery' %}" class="w3-button w3-white w3-round-large">View Gallery</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="w3-panel w3-light-grey w3-round-large w3-padding w3-margin-top">
-            <h4>Getting Started Tips:</h4>
-            <ul>
-                <li><strong>Start Simple:</strong> Begin with one chapter about your earliest memories</li>
-                <li><strong>Be Authentic:</strong> Write in your own voice - don't worry about being perfect</li>
-                <li><strong>Include Details:</strong> Add specific dates, places, and people's names</li>
-                <li><strong>Add Photos:</strong> Include images that relate to your stories</li>
-                <li><strong>Take Your Time:</strong> This is a journey, not a race - write when you feel inspired</li>
-            </ul>
-        </div>
-
-        <div class="w3-panel w3-center w3-padding">
-            <a href="{% url 'new_chapter' %}" class="w3-button w3-blue-grey w3-round-large w3-large">Create Your First Chapter</a>
+        <div class="w3-margin-top">
+            <a href="{% url 'new_chapter' %}" class="w3-button w3-white w3-round-large w3-large w3-margin-right">
+                ✍️ Start Writing Today
+            </a>
+            <a href="{% url 'chapters_list' %}" class="w3-button w3-border w3-border-white w3-round-large w3-large w3-text-white">
+                📚 Browse Chapters
+            </a>
         </div>
     </div>
+</div>
+
+<!-- Features Section -->
+<div class="w3-container w3-padding-large">
+    <h2 class="w3-center w3-xxlarge" style="margin-bottom: 40px; color: #1a1a1a; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.1);">
+        ✨ Why Choose Our Autobiography Platform?
+    </h2>
+    
+    <div class="w3-row-padding">
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-card w3-blue-grey w3-round-large w3-padding" style="min-height: 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="w3-padding w3-center">
+                        <i class="fa fa-edit" style="font-size: 50px; color: white;"></i>
+                    </div>
+                    <h3 class="w3-text-white w3-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">📝 Rich Text Editor</h3>
+                    <p class="w3-text-white" style="line-height: 1.5; text-align: left;">Professional writing tools with formatting, images, and multimedia support. 
+                    Make your stories come alive with our advanced editor.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-card w3-teal w3-round-large w3-padding" style="min-height: 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="w3-padding w3-center">
+                        <i class="fa fa-images" style="font-size: 50px; color: white;"></i>
+                    </div>
+                    <h3 class="w3-text-white w3-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">📸 Photo Gallery</h3>
+                    <p class="w3-text-white" style="line-height: 1.5; text-align: left;">Upload and organize your precious photos. Create visual timelines 
+                    that complement your written memories perfectly.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-card w3-indigo w3-round-large w3-padding" style="min-height: 300px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="w3-padding w3-center">
+                        <i class="fa fa-mobile" style="font-size: 50px; color: white;"></i>
+                    </div>
+                    <h3 class="w3-text-white w3-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">📱 Responsive Design</h3>
+                    <p class="w3-text-white" style="line-height: 1.5; text-align: left;">Write and read your autobiography on any device - desktop, tablet, 
+                    or mobile. Your stories are always accessible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<div class="w3-container w3-padding-large">
+    <div class="w3-card-4 w3-light-grey w3-round-large w3-padding-large">
+        <h2 class="w3-center w3-text-blue-grey w3-xxlarge" style="margin-bottom: 40px; color: #2c3e50;">
+            🚀 How It Works
+        </h2>
+        
+        <div class="w3-row-padding">
+            <div class="w3-col m3 w3-center">
+                <div class="w3-circle w3-blue-grey w3-padding-large" style="width: 80px; height: 80px; margin: 0 auto;">
+                    <span class="w3-xxlarge w3-text-white">1</span>
+                </div>
+                <h4 class="w3-margin-top" style="color: #2c3e50;">Create Account</h4>
+                <p style="color: #34495e; text-align: left;">Sign up and set up your personal autobiography space</p>
+            </div>
+            
+            <div class="w3-col m3 w3-center">
+                <div class="w3-circle w3-teal w3-padding-large" style="width: 80px; height: 80px; margin: 0 auto;">
+                    <span class="w3-xxlarge w3-text-white">2</span>
+                </div>
+                <h4 class="w3-margin-top" style="color: #2c3e50;">Write Chapters</h4>
+                <p style="color: #34495e; text-align: left;">Start with your earliest memories and build your story</p>
+            </div>
+            
+            <div class="w3-col m3 w3-center">
+                <div class="w3-circle w3-indigo w3-padding-large" style="width: 80px; height: 80px; margin: 0 auto;">
+                    <span class="w3-xxlarge w3-text-white">3</span>
+                </div>
+                <h4 class="w3-margin-top" style="color: #2c3e50;">Add Photos</h4>
+                <p style="color: #34495e; text-align: left;">Upload images that bring your stories to life</p>
+            </div>
+            
+            <div class="w3-col m3 w3-center">
+                <div class="w3-circle w3-purple w3-padding-large" style="width: 80px; height: 80px; margin: 0 auto;">
+                    <span class="w3-xxlarge w3-text-white">4</span>
+                </div>
+                <h4 class="w3-margin-top" style="color: #2c3e50;">Share & Preserve</h4>
+                <p style="color: #34495e; text-align: left;">Share with family and create a lasting legacy</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Getting Started Tips -->
+<div class="w3-container w3-padding-large">
+    <div class="w3-card-4 w3-white w3-round-large w3-padding-large">
+        <h2 class="w3-center w3-text-blue-grey w3-xxlarge" style="margin-bottom: 40px; color: #2c3e50;">
+            💡 Getting Started Tips
+        </h2>
+        
+        <div class="w3-row-padding">
+            <div class="w3-col m6">
+                <div class="w3-panel w3-leftbar w3-border-blue-grey w3-pale-blue-grey w3-padding" style="border-left-color: #607d8b !important;">
+                    <h4 style="color: #2c3e50;">🎯 Start Simple</h4>
+                    <p style="color: #34495e; text-align: left;">Begin with one chapter about your earliest memories. Don't worry about perfection - just start writing from the heart.</p>
+                </div>
+                
+                <div class="w3-panel w3-leftbar w3-border-teal w3-pale-teal w3-padding" style="border-left-color: #009688 !important;">
+                    <h4 style="color: #2c3e50;">📅 Include Details</h4>
+                    <p style="color: #34495e; text-align: left;">Add specific dates, places, and people's names. These details make your stories more vivid and meaningful.</p>
+                </div>
+                
+                <div class="w3-panel w3-leftbar w3-border-indigo w3-pale-indigo w3-padding" style="border-left-color: #3f51b5 !important;">
+                    <h4 style="color: #2c3e50;">📸 Add Photos</h4>
+                    <p style="color: #34495e; text-align: left;">Include images that relate to your stories. Photos can trigger memories and add visual context.</p>
+                </div>
+            </div>
+            
+            <div class="w3-col m6">
+                <div class="w3-panel w3-leftbar w3-border-purple w3-pale-purple w3-padding" style="border-left-color: #9c27b0 !important;">
+                    <h4 style="color: #2c3e50;">⏰ Take Your Time</h4>
+                    <p style="color: #34495e; text-align: left;">This is a journey, not a race. Write when you feel inspired and take breaks when needed.</p>
+                </div>
+                
+                <div class="w3-panel w3-leftbar w3-border-orange w3-pale-orange w3-padding" style="border-left-color: #ff5722 !important;">
+                    <h4 style="color: #2c3e50;">🔍 Be Authentic</h4>
+                    <p style="color: #34495e; text-align: left;">Write in your own voice. Don't worry about perfect grammar - focus on telling your story honestly.</p>
+                </div>
+                
+                <div class="w3-panel w3-leftbar w3-border-red w3-pale-red w3-padding" style="border-left-color: #f44336 !important;">
+                    <h4 style="color: #2c3e50;">💭 Reflect & Share</h4>
+                    <p style="color: #34495e; text-align: left;">Share your stories with family and friends. Their reactions and memories can enrich your autobiography.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="w3-container w3-padding-large">
+    <div class="w3-card-4 w3-blue-grey w3-round-large w3-padding-large w3-center" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <h2 class="w3-text-white w3-xxlarge" style="margin-bottom: 30px;">
+            Ready to Start Your Life Story?
+        </h2>
+        <p class="w3-large w3-text-white" style="margin-bottom: 40px; text-align: justify;">
+            Join thousands of people who are preserving their memories and creating lasting legacies for future generations.
+        </p>
+        <div class="w3-margin-top">
+            <a href="{% url 'new_chapter' %}" class="w3-button w3-white w3-round-large w3-xlarge w3-margin-right">
+                ✍️ Create Your First Chapter
+            </a>
+            <a href="{% url 'about' %}" class="w3-button w3-border w3-border-white w3-round-large w3-xlarge w3-text-white">
+                ℹ️ Learn More
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Note -->
+<div class="w3-container w3-padding w3-center">
+    <p class="w3-text-grey w3-medium" style="color: #7f8c8d;">
+        <em>"Every life holds a story worth telling. Start writing yours today."</em>
+    </p>
 </div>
 {% endblock %} 

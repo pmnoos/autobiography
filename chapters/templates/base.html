@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}MyStory{% endblock %}</title>
+    <title>{% block title %}{{ SITE_TITLE }}{% endblock %}</title>
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
     <!-- ✅ Google Fonts & W3.CSS -->
@@ -30,7 +30,11 @@
     <!-- Header Section -->
     <header class="site-header w3-blue-grey">
         <h1 class="title">{{ SITE_SUBTITLE }}</h1>
-        <img src="{% static 'images/P in Positano.jpg' %}" alt="Header Image" class="header-image">
+        <div class="header-image" style="width: 85%; max-width: 600px; height: 140px; border-radius: 30px; display: block; margin: 15px auto; border: 2px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); position: relative; background: #f5f5f5;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #607d8b; font-size: 24px; font-weight: bold; text-align: center;">
+                Your Life Story Platform
+            </div>
+        </div>
         <h2 class="subtitle">{{ SITE_DESCRIPTION }}</h2>
     </header>
 
@@ -58,6 +62,7 @@
     <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
     {% endif %}
     <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a>
+    <a href="{% url 'chapters_list' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-indigo">Chapters</a>
     <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">New Chapter</a>
     <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">Photo-Gallery</a>
     {% if user.is_authenticated %}
@@ -82,8 +87,9 @@
         <div class="w3-content" style="max-width: 600px; margin: 0 auto; text-align: center;">
             
             <!-- Author Photo -->
-            <img src="{% static 'images/favicon.ico' %}" alt="Author Photo"
-                 class="w3-circle" style="width:80px;height:80px;object-fit:cover;border:2px solid white; margin: 0 auto;">
+            <div class="w3-circle" style="width:80px;height:80px;background: #f5f5f5; border:2px solid #607d8b; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #607d8b; font-weight: bold; font-size: 14px;">
+                Author
+            </div>
             
             <!-- Quote -->
             <p class="w3-medium w3-margin-top w3-opacity" style="margin-top: 12px; text-align: center;">
