@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Personal Autobiography App{% endblock %}</title>
+    <title>{% block title %}{{ SITE_TITLE }}{% endblock %}</title>
     <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
     <!-- ✅ Google Fonts & W3.CSS -->
@@ -29,12 +29,14 @@
 <body class="w3-light-grey">
 
     <!-- Header Section -->
-    <header class="site-header w3-blue-grey" style="background: linear-gradient(135deg, #607d8b 0%, #455a64 100%); padding: 40px 20px; text-align: center;">
-        <h1 class="title">{{ t.your_life_story }}</h1>
-        <div style="width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 40px; color: white;">
-            ✍️
+    <header class="site-header w3-blue-grey">
+        <h1 class="title">{{ SITE_SUBTITLE }}</h1>
+        <div class="header-image" style="width: 85%; max-width: 600px; height: 140px; border-radius: 30px; display: block; margin: 15px auto; border: 2px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); position: relative; background: #f5f5f5;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #607d8b; font-size: 24px; font-weight: bold; text-align: center;">
+                Your Life Story Platform
+            </div>
         </div>
-        <h2 class="subtitle">{{ t.subtitle }}</h2>
+        <h2 class="subtitle">{{ SITE_DESCRIPTION }}</h2>
     </header>
 
     {% if messages %}
@@ -47,45 +49,31 @@
     </div>
     {% endif %}
 
-    <!-- Navigation Bar -->
-    <nav class="w3-bar w3-white w3-border-bottom w3-padding">
-        <div class="w3-bar-item w3-margin-left">
-            <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">{{ t.home }}</a>
-            <a href="{% url 'getting_started' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-indigo">{{ t.getting_started }}</a>
-            <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">{{ t.new_chapter }}</a>
-            <a href="{% url 'gallery:gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">{{ t.photo_gallery }}</a>
-            {% if user.is_authenticated %}
-                <a href="{% url 'gallery:upload_image' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-orange">{{ t.upload_images }}</a>
-            {% endif %}
-            {% if user.is_staff %}
-                <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-purple">{{ t.admin_panel }}</a>
-                <a href="{% url 'export_chapters' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-green">{{ t.download_backup }}</a>
-            {% endif %}
-        </div>
-        
-        <!-- Language Selector -->
-        <div class="w3-dropdown-hover w3-right">
-            <button class="w3-button w3-round-large w3-margin-right w3-light-grey">
-                🌍 {{ current_language|upper }}
-            </button>
-            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                <form name="setLangForm" action="{% url 'set_language' %}" method="POST" style="display: inline;">
-                    {% csrf_token %}
-                    <input name="next" type="hidden" value="{{ request.path }}">
-                    <a href="#" onclick="setLanguage('en')" class="w3-bar-item w3-button">🇺🇸 English</a>
-                    <a href="#" onclick="setLanguage('es')" class="w3-bar-item w3-button">🇪🇸 Español</a>
-                    <a href="#" onclick="setLanguage('fr')" class="w3-bar-item w3-button">🇫🇷 Français</a>
-                </form>
-            </div>
-        </div>
-        
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}" class="w3-button w3-red w3-round w3-right">{{ t.logout }}</a>
-            <span class="w3-right w3-margin-right">{{ t.welcome }}, {{ user.username }}!</span>
-        {% else %}
-            <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">{{ t.login }}</a>
-        {% endif %}
-    </nav>
+   <!-- Navigation -->
+<div class="w3-bar w3-blue-grey w3-padding">
+    {% if user.is_authenticated %}
+    <div class="w3-bar-item w3-right">
+        <b>Welcome, {{ user.username }}!</b>
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="w3-button w3-red w3-round-large">Logout</button>
+        </form>
+    </div>
+    {% else %}
+    <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
+    {% endif %}
+    <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a>
+    <a href="{% url 'chapters_list' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-indigo">Chapters</a>
+    <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">New Chapter</a>
+    <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">Photo-Gallery</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'gallery:upload_image' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-purple">Upload Images</a>
+    {% endif %}
+    {% if user.is_staff %}
+    <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-orange">Admin Panel</a>
+    <a href="{% url 'export_chapters' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-green">Download Backup</a>
+    {% endif %}
+</div>
 
     <!-- Page Content -->
     <div class="w3-container w3-padding content-container w3-blue-grey w3-round-large w3-margin-top">
@@ -95,12 +83,17 @@
 
     <hr>
 
-    <!-- Footer -->
-    <footer class="w3-container w3-blue-grey w3-center w3-margin-top">
-        <div class="w3-padding">
+    <footer class="w3-container w3-blue-grey w3-padding w3-margin-top w3-center w3-round-large">
+        <div class="w3-content" style="max-width: 600px; margin: 0 auto; text-align: center;">
+            
+            <!-- Author Photo -->
+            <div class="w3-circle" style="width:80px;height:80px;background: #f5f5f5; border:2px solid #607d8b; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #607d8b; font-weight: bold; font-size: 14px;">
+                Author
+            </div>
+            
             <!-- Quote -->
             <p class="w3-medium w3-margin-top w3-opacity" style="margin-top: 12px; text-align: center;">
-                <em>"{{ t.footer_quote }}"</em>
+                <em>"Every life holds a story. Mine just happens to be written here."</em>
             </p>
             
             <!-- Decorative Line -->
@@ -108,10 +101,22 @@
             
             <!-- Signature -->
             <p class="w3-medium w3-opacity" style="text-align: center;">
-                <em>{{ t.footer_signature }}</em>
+                <em>{{ AUTHOR_SIGNATURE }}</em>
             </p>
+            
+            <!-- Copyright -->
+            <p class="w3-small" style="margin-top: 10px; text-align: center;">&copy; 2025 EasyAS International</p>
+            
         </div>
     </footer>
+    
+    
+    
+    
+    
+        
+ 
+        
 
     <!-- ✅ W3.CSS JavaScript for Responsive Navigation -->
     <script>
@@ -179,16 +184,5 @@
     });
 </script>
 
-<script>
-    function setLanguage(langCode) {
-        var form = document.forms['setLangForm'];
-        var input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'language';
-        input.value = langCode;
-        form.appendChild(input);
-        form.submit();
-    }
-</script>
 </body>
 </html> 
