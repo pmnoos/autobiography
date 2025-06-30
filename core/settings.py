@@ -110,7 +110,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
    # },
 #}
 
-
+# Add this line to settings.py
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # TinyMCE Configuration
 TINYMCE_DEFAULT_CONFIG = {
