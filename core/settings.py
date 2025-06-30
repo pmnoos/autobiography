@@ -61,6 +61,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///' + str(BASE_DIR / 'db.sqlite3')  # Local fallback
+    
     )
 }
 
@@ -103,11 +104,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # WhiteNoise configuration for Render (Updated for newer Django)
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+#STORAGES = {
+ #   "staticfiles": {
+  #      "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+   # },
+#}
 
 
 
