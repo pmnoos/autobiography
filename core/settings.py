@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #"whitenoise.middleware.WhiteNoiseMiddleware",  # Move this to position 2
+    "whitenoise.middleware.WhiteNoiseMiddleware",  # Move this to position 2
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -111,7 +111,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #}
 
 # Add this line to settings.py
-3#TATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # TinyMCE Configuration
 TINYMCE_DEFAULT_CONFIG = {
