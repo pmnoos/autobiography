@@ -1,0 +1,24 @@
+{% extends "base_simple.html" %}
+{% load static %}
+
+{% block title %}Test Images{% endblock %}
+
+{% block content %}
+<div class="w3-container w3-padding">
+    <h1>Image Test</h1>
+    
+    <p>Testing dadmum image with static tag:</p>
+    <img src="{% static 'images/gallery/dadmum.jpg' %}" alt="Dad and Mum" style="max-width: 300px; border: 1px solid red;">
+    
+    <p>Testing dadmum image with absolute path:</p>
+    <img src="/static/images/gallery/dadmum.jpg" alt="Dad and Mum" style="max-width: 300px; border: 1px solid blue;">
+    
+    <p>Testing other images:</p>
+    <img src="/static/images/favicon.ico" alt="Favicon" style="border: 1px solid green;">
+    <img src="/static/images/P%20in%20Positano.jpg" alt="Peter in Positano" style="max-width: 300px; border: 1px solid purple;">
+    
+    <p>Debug info:</p>
+    <p>STATIC_URL: {{ STATIC_URL }}</p>
+    <p>Static path test: {% static 'images/gallery/dadmum.jpg' %}</p>
+</div>
+{% endblock %}
