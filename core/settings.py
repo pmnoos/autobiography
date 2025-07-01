@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-r^c!!%=!yh&f7#4pdimu&e)v_kfc-8u201xl9rn=ay@a2+-#lc')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 ALLOWED_HOSTS = ['*']  # For development and testing on Render
 
 # Application definition
@@ -27,7 +27,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # Move this to position 2
+    #"whitenoise.middleware.WhiteNoiseMiddleware",  # Move this to position 2
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,16 +92,19 @@ LOCALE_PATHS = [
 ]
 
 # Static files (CSS, JavaScript, Images)
+
+# Static files - SUPER SIMPLE
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# WhiteNoise configuration for Render
-STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
-
-# Media files - CLEAN and SIMPLE  
+# Media files  
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# NO WhiteNoise complications for now
+# STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
+
 
 
 # TinyMCE Configuration
