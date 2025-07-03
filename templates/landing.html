@@ -1,17 +1,17 @@
-{% extends "base_simple.html" %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block title %}Personal Autobiography App - Tell Your Story{% endblock %}
+{% block title %}LifeStory Platform - Tell Your Story{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<div class="w3-container w3-center w3-padding-64" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); margin: -16px -16px 32px -16px; padding: 64px 16px;">
+<div class="w3-container w3-center w3-padding-32" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); margin: -16px -16px 16px -16px; padding: 32px 16px;">
     <div class="w3-row">
         <div class="w3-col m6 w3-padding">
-            <h1 class="w3-xxlarge w3-text-dark-grey" style="font-weight: bold; margin-bottom: 24px;">
+            <h1 class="w3-xxlarge w3-text-dark-grey" style="font-weight: bold; margin-bottom: 16px;">
                 Your Life Story, Beautifully Told
             </h1>
-            <p class="w3-large w3-text-grey" style="line-height: 1.6; margin-bottom: 32px;">
+            <p class="w3-large w3-text-grey" style="line-height: 1.6; margin-bottom: 24px;">
                 Create, organize, and preserve your personal autobiography with our intuitive web application. 
                 Share your memories, photos, and life experiences in a beautiful, organized format.
             </p>
@@ -28,17 +28,16 @@
             <img src="{% static 'images/P in Positano.jpg' %}" alt="App Preview" 
                  style="width: 100%; max-width: 400px; height: auto; border-radius: 8px;">
         </div>
-        </div>
     </div>
 </div>
 
 <!-- Features Section -->
-<div id="features" class="w3-container w3-padding-64">
-    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 48px;">Why Choose Our Autobiography App?</h2>
+<div id="features" class="w3-container w3-padding-32">
+    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 32px;">Why Choose Our Autobiography App?</h2>
     
     <div class="w3-row-padding w3-center w3-margin-top">
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="height: 300px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="height: 280px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-blue" style="margin-bottom: 16px;">📝</div>
                 <h3 class="w3-large w3-text-dark-grey">Rich Text Editor</h3>
                 <p class="w3-text-grey">Professional writing experience with formatting, images, and multimedia support. 
@@ -46,7 +45,7 @@
             </div>
         </div>
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="height: 300px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="height: 280px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-green" style="margin-bottom: 16px;">📸</div>
                 <h3 class="w3-large w3-text-dark-grey">Photo Gallery</h3>
                 <p class="w3-text-grey">Upload and organize your precious photos. Create visual timelines 
@@ -54,7 +53,7 @@
             </div>
         </div>
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="height: 300px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="height: 280px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-purple" style="margin-bottom: 16px;">🔒</div>
                 <h3 class="w3-large w3-text-dark-grey">Secure & Private</h3>
                 <p class="w3-text-grey">Your personal stories are protected with secure authentication. 
@@ -65,7 +64,7 @@
     
     <div class="w3-row-padding w3-center w3-margin-top">
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="height: 300px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="height: 280px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-orange" style="margin-bottom: 16px;">📚</div>
                 <h3 class="w3-large w3-text-dark-grey">Chapter Organization</h3>
                 <p class="w3-text-grey">Organize your life story into meaningful chapters. 
@@ -73,7 +72,7 @@
             </div>
         </div>
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="height: 300px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="height: 280px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-teal" style="margin-bottom: 16px;">💾</div>
                 <h3 class="w3-large w3-text-dark-grey">Export & Backup</h3>
                 <p class="w3-text-grey">Download your autobiography as a complete backup. 
@@ -81,7 +80,7 @@
             </div>
         </div>
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="height: 300px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="height: 280px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-red" style="margin-bottom: 16px;">🌐</div>
                 <h3 class="w3-large w3-text-dark-grey">Multi-Language</h3>
                 <p class="w3-text-grey">Write in English, Spanish, or French. 
@@ -92,11 +91,11 @@
 </div>
 
 <!-- Demo Section -->
-<div class="w3-container w3-padding-64" style="background: #f8f9fa;">
+<div class="w3-container w3-padding-32" style="background: #f8f9fa;">
     <div class="w3-row">
         <div class="w3-col m6 w3-padding">
-            <h2 class="w3-xxlarge w3-text-dark-grey" style="margin-bottom: 24px;">Try It Now - Free Demo</h2>
-            <p class="w3-large w3-text-grey" style="line-height: 1.6; margin-bottom: 24px;">
+            <h2 class="w3-xxlarge w3-text-dark-grey" style="margin-bottom: 16px;">Try It Now - Free Demo</h2>
+            <p class="w3-large w3-text-grey" style="line-height: 1.6; margin-bottom: 16px;">
                 Experience the power of our autobiography app with our free demo. 
                 Create sample chapters, upload photos, and see how easy it is to tell your story.
             </p>
@@ -110,7 +109,7 @@
             </a>
         </div>
         <div class="w3-col m6 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding" style="box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
                 <h3 class="w3-center w3-text-dark-grey">What You Can Do:</h3>
                 <ul class="w3-ul w3-text-grey">
                     <li>✅ Create and edit chapters</li>
@@ -126,12 +125,11 @@
 </div>
 
 <!-- Pricing Section -->
-<div class="w3-container w3-padding-64">
-    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 48px;">Simple, Transparent Pricing</h2>
-    
+<div class="w3-container w3-padding-32" style="max-width: 900px; margin: 0 auto;">
+    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 32px;">Simple, Transparent Pricing</h2>
     <div class="w3-row-padding w3-center">
         <div class="w3-col m6 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <h3 class="w3-large w3-text-dark-grey">Demo Version</h3>
                 <div class="w3-jumbo w3-text-blue">FREE</div>
                 <ul class="w3-ul w3-text-grey">
@@ -146,7 +144,7 @@
             </div>
         </div>
         <div class="w3-col m6 w3-padding">
-            <div class="w3-card w3-blue w3-round-large w3-padding-32" style="box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+            <div class="w3-card w3-blue w3-round-large w3-padding-24" style="box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
                 <h3 class="w3-large w3-text-white">Full Version</h3>
                 <div class="w3-jumbo w3-text-white">Contact Us</div>
                 <ul class="w3-ul w3-text-white">
@@ -165,25 +163,24 @@
 </div>
 
 <!-- Contact Section -->
-<div id="contact" class="w3-container w3-padding-64" style="background: #f8f9fa;">
-    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 48px;">Get In Touch</h2>
-    
+<div id="contact" class="w3-container w3-padding-32" style="background: #f8f9fa; max-width: 900px; margin: 0 auto;">
+    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 32px;">Get In Touch</h2>
     <div class="w3-row">
         <div class="w3-col m6 w3-padding">
-            <h3 class="w3-large w3-text-dark-grey" style="margin-bottom: 24px;">Ready to Start Your Story?</h3>
-            <p class="w3-text-grey" style="line-height: 1.6; margin-bottom: 24px;">
+            <h3 class="w3-large w3-text-dark-grey" style="margin-bottom: 16px;">Ready to Start Your Story?</h3>
+            <p class="w3-text-grey" style="line-height: 1.6; margin-bottom: 16px;">
                 Whether you want to try the demo, get a custom installation, or have questions about features, 
                 we're here to help you preserve your life story.
             </p>
             <div class="w3-padding-16">
-                <p class="w3-text-dark-grey"><strong>Email:</strong> contact@autobiography-app.com</p>
+                <p class="w3-text-dark-grey"><strong>Email:</strong> contact@lifestory-platform.com</p>
                 <p class="w3-text-dark-grey"><strong>Demo Access:</strong> Available 24/7</p>
                 <p class="w3-text-dark-grey"><strong>Support:</strong> Technical assistance included</p>
             </div>
         </div>
         <div class="w3-col m6 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
-                <h3 class="w3-large w3-text-dark-grey" style="margin-bottom: 24px;">Send us a Message</h3>
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                <h3 class="w3-large w3-text-dark-grey" style="margin-bottom: 16px;">Send us a Message</h3>
                 <form method="post" action="{% url 'contact' %}">
                     {% csrf_token %}
                     <div class="w3-padding-16">
@@ -210,11 +207,11 @@
 </div>
 
 <!-- Quick Start Section -->
-<div class="w3-container w3-padding-64">
-    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 48px;">Quick Start</h2>
+<div class="w3-container w3-padding-32" style="max-width: 900px; margin: 0 auto;">
+    <h2 class="w3-center w3-xxlarge w3-text-dark-grey" style="margin-bottom: 32px;">Quick Start</h2>
     <div class="w3-row-padding w3-center">
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-blue" style="margin-bottom: 16px;">1️⃣</div>
                 <h3 class="w3-large w3-text-dark-grey">Try the Demo</h3>
                 <p class="w3-text-grey">Experience the app with our free demo. No registration required.</p>
@@ -224,7 +221,7 @@
             </div>
         </div>
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-green" style="margin-bottom: 16px;">2️⃣</div>
                 <h3 class="w3-large w3-text-dark-grey">Learn How</h3>
                 <p class="w3-text-grey">Read our getting started guide to understand all features.</p>
@@ -234,7 +231,7 @@
             </div>
         </div>
         <div class="w3-col m4 w3-padding">
-            <div class="w3-card w3-white w3-round-large w3-padding-32" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+            <div class="w3-card w3-white w3-round-large w3-padding-24" style="box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
                 <div class="w3-jumbo w3-text-purple" style="margin-bottom: 16px;">3️⃣</div>
                 <h3 class="w3-large w3-text-dark-grey">Get Started</h3>
                 <p class="w3-text-grey">Begin writing your autobiography with our easy-to-use interface.</p>
@@ -247,9 +244,9 @@
 </div>
 
 <!-- Call to Action -->
-<div class="w3-container w3-center w3-padding-64" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-    <h2 class="w3-xxlarge" style="margin-bottom: 24px;">Your Story Matters</h2>
-    <p class="w3-large" style="line-height: 1.6; margin-bottom: 32px;">
+<div class="w3-container w3-center w3-padding-32" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; max-width: 900px; margin: 0 auto;">
+    <h2 class="w3-xxlarge" style="margin-bottom: 16px;">Your Story Matters</h2>
+    <p class="w3-large" style="line-height: 1.6; margin-bottom: 24px;">
         Every life is a story worth telling. Start preserving your memories today.
     </p>
     <a href="{% url 'login' %}" class="w3-button w3-white w3-round-large w3-padding-large w3-text-blue">
