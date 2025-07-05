@@ -16,6 +16,7 @@ from django.db.models import Q
 import re
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from datetime import datetime
 
 # Simple translation dictionary
 TRANSLATIONS = {
@@ -31,7 +32,7 @@ TRANSLATIONS = {
         'logout': 'Logout',
         'welcome': 'Welcome',
         'your_life_story': 'Your Life Story - Beautifully Told',
-        'subtitle': 'Create, organize, and share your personal autobiography with chapters, photos, and memories. Turn your life experiences into a beautiful digital legacy.',
+        'subtitle': 'Create, organize, and share your life story with chapters, photos, and memories. Turn your experiences into a beautiful digital legacy.',
         'footer_quote': 'Every life is a story worth telling. Start writing yours today.',
         'footer_signature': 'Share your journey, preserve your memories, inspire others.',
     },
@@ -47,7 +48,7 @@ TRANSLATIONS = {
         'logout': 'Cerrar Sesión',
         'welcome': 'Bienvenido',
         'your_life_story': 'Tu Historia de Vida - Hermosamente Contada',
-        'subtitle': 'Crea, organiza y comparte tu autobiografía personal con capítulos, fotos y recuerdos. Convierte tus experiencias de vida en un hermoso legado digital.',
+        'subtitle': 'Crea, organiza y comparte tu historia de vida con capítulos, fotos y recuerdos. Convierte tus experiencias en un hermoso legado digital.',
         'footer_quote': 'Cada vida es una historia que vale la pena contar. Comienza a escribir la tuya hoy.',
         'footer_signature': 'Comparte tu viaje, preserva tus recuerdos, inspira a otros.',
     },
@@ -63,7 +64,7 @@ TRANSLATIONS = {
         'logout': 'Déconnexion',
         'welcome': 'Bienvenue',
         'your_life_story': 'Votre Histoire de Vie - Magnifiquement Racontee',
-        'subtitle': 'Créez, organisez et partagez votre autobiographie personnelle avec des chapitres, des photos et des souvenirs. Transformez vos expériences de vie en un magnifique héritage numérique.',
+        'subtitle': 'Créez, organisez et partagez votre histoire de vie avec des chapitres, des photos et des souvenirs. Transformez vos expériences en un magnifique héritage numérique.',
         'footer_quote': 'Chaque vie est une histoire qui mérite d\'être racontée. Commencez à écrire la vôtre aujourd\'hui.',
         'footer_signature': 'Partagez votre voyage, préservez vos souvenirs, inspirez les autres.',
     }
@@ -282,3 +283,35 @@ def contact(request):
         form = ContactForm()
     
     return render(request, 'landing.html', {'contact_form': form})
+
+def test_autobiography(request):
+    """Simple test to show autobiography content"""
+    from django.http import HttpResponse
+    html = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>TEST - Peter's Autobiography</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; background: #f0f0f0; }
+            .container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+            h1 { color: #333; text-align: center; }
+            .success { color: green; font-weight: bold; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🎉 TEST - Peter's Autobiography - WORKING! 🎉</h1>
+            <p class="success">✅ If you can see this, Django is working!</p>
+            <p>This is a test page to confirm your autobiography is working.</p>
+            <p>Current time: """ + str(datetime.now()) + """</p>
+        </div>
+    </body>
+    </html>
+    """
+    return HttpResponse(html)
+
+def simple_test(request):
+    """Very simple test - just plain text"""
+    from django.http import HttpResponse
+    return HttpResponse("PETER'S AUTOBIOGRAPHY TEST - IF YOU SEE THIS, IT'S WORKING!")

@@ -1,6 +1,6 @@
-# Personal Autobiography App
+# LifeStory Platform
 
-A beautiful, feature-rich Django application for creating and sharing personal autobiographies with chapters, photos, and memories.
+A professional, feature-rich Django application for creating, managing, and sharing life stories and autobiographies with chapters, photos, and memories. Perfect for individuals, families, and organizations looking to preserve and share their stories online.
 
 ## 🌟 Features
 
@@ -83,33 +83,32 @@ A beautiful, feature-rich Django application for creating and sharing personal a
    This creates a demo account (username: `demo`, password: `demo123`) for easy access.
 
 3. **Customize the site**:
-   - Edit `chapters/templates/base.html` to change the title, subtitle, and branding
-   - Update the footer information in the same file
+   - Edit `core/context_processors.py` to change the site title, subtitle, and branding
+   - Update the footer information in `templates/base.html`
    - Modify sample content through the admin panel
 
-### For Personal Use
+### For Commercial Use
 
-1. **Change default credentials** (if using demo account):
-   - Log in with the demo credentials
-   - Go to Admin Panel → Users → Edit the demo user
-   - Change username, email, and password
-   - Or create a new superuser and delete the demo account
+1. **Set up your platform**:
+   - Create a superuser account for administration
+   - Configure your site branding in `core/context_processors.py`
+   - Set up your domain and hosting environment
 
-2. **Create your first chapter**:
+2. **Create sample content**:
    - Log in to the admin panel
    - Go to "Chapters" → "Add Chapter"
    - Fill in the title, subtitle, and content
    - Use the rich text editor for formatting
 
-2. **Add photos to your gallery**:
+3. **Add photos to your gallery**:
    - Go to "Gallery images" → "Add Gallery Image"
    - Upload images and add descriptions
    - Link images to specific chapters if desired
 
-3. **Organize your content**:
+4. **Organize your content**:
    - Use the "Order" field to arrange chapters chronologically
    - Add meaningful slugs for better URLs
-   - Include personal photos and memories
+   - Include professional photos and content
 
 ## 🌐 Deployment Options
 

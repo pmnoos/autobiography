@@ -29,15 +29,22 @@
 <body class="w3-light-grey">
 
     <!-- Header Section -->
-    <header class="site-header w3-blue-grey">
-        <h1 class="title">{{ SITE_SUBTITLE }}</h1>
-        <div class="header-image" style="width: 85%; max-width: 600px; height: 140px; border-radius: 30px; display: block; margin: 15px auto; border: 2px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); position: relative; background: #f5f5f5;">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #607d8b; font-size: 24px; font-weight: bold; text-align: center;">
-                Your Life Story Platform
+    <div class="w3-container w3-blue-grey w3-padding-32">
+        <div class="narrow-header-footer">
+            <h1 class="title w3-center">{{ SITE_SUBTITLE }}</h1>
+            <div class="header-image w3-center" style="width: 85%; max-width: 600px; height: 140px; border-radius: 30px; display: block; margin: 15px auto; border: 2px solid #ccc; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); position: relative; background: #f5f5f5;">
+                <img src="{% static 'images/P in Positano.jpg' %}" alt="Peter in Positano" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px;">
             </div>
+            
+            <!-- Featured Quote Section -->
+            <h2 class="subtitle w3-center">
+                Through the simplicity of my existence, I unearthed the profound truth<br>
+                that to love and to be loved is the greatest adventure of all...
+            </h2>
+            
+            <h2 class="subtitle w3-center">{{ SITE_DESCRIPTION }}</h2>
         </div>
-        <h2 class="subtitle">{{ SITE_DESCRIPTION }}</h2>
-    </header>
+    </div>
 
     {% if messages %}
     <div class="w3-panel w3-blue-grey w3-display-container">
@@ -50,29 +57,31 @@
     {% endif %}
 
    <!-- Navigation -->
-<div class="w3-bar w3-blue-grey w3-padding">
-    {% if user.is_authenticated %}
-    <div class="w3-bar-item w3-right">
-        <b>Welcome, {{ user.username }}!</b>
-        <form action="{% url 'logout' %}" method="post" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="w3-button w3-red w3-round-large">Logout</button>
-        </form>
+<div class="w3-blue-grey w3-padding-16">
+    <div class="w3-content" style="max-width: 1200px; margin: 0 auto;">
+        <div class="w3-bar w3-padding">
+            {% if user.is_authenticated %}
+            <div class="w3-bar-item w3-right">
+                <b>Welcome, {{ user.username }}!</b>
+                <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="w3-button w3-red w3-round w3-small">Logout</button>
+                </form>
+            </div>
+            {% else %}
+            <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-small w3-right">Login</a>
+            {% endif %}
+            <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-round w3-small w3-margin-right w3-indigo">My Story</a>
+            <a href="{% url 'gallery:gallery' %}" class="w3-bar-item w3-button w3-round w3-small w3-margin-right w3-yellow">Photos</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'gallery:upload_image' %}" class="w3-bar-item w3-button w3-round w3-small w3-margin-right w3-purple">Upload</a>
+            {% endif %}
+            {% if user.is_staff %}
+            <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-round w3-small w3-margin-right w3-orange">Admin</a>
+            <a href="{% url 'export_chapters' %}" class="w3-bar-item w3-button w3-round w3-small w3-margin-right w3-green">Backup</a>
+            {% endif %}
+        </div>
     </div>
-    {% else %}
-    <a href="{% url 'login' %}" class="w3-button w3-blue w3-round w3-right">Login</a>
-    {% endif %}
-    <a href="{% url 'chapter_list' %}" class="w3-bar-item w3-margin-left w3-button w3-round-large w3-cyan">Home</a>
-    <a href="{% url 'chapters_list' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-indigo">Chapters</a>
-    <a href="{% url 'new_chapter' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-teal">New Chapter</a>
-    <a href="{% url 'gallery' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-yellow">Photo-Gallery</a>
-    {% if user.is_authenticated %}
-    <a href="{% url 'gallery:upload_image' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-purple">Upload Images</a>
-    {% endif %}
-    {% if user.is_staff %}
-    <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-orange">Admin Panel</a>
-    <a href="{% url 'export_chapters' %}" class="w3-bar-item w3-button w3-round-large w3-margin-left w3-green">Download Backup</a>
-    {% endif %}
 </div>
 
     <!-- Page Content -->
@@ -83,30 +92,34 @@
 
     <hr>
 
-    <footer class="w3-container w3-blue-grey w3-padding w3-margin-top w3-center w3-round-large">
-        <div class="w3-content" style="max-width: 600px; margin: 0 auto; text-align: center;">
-            
+    <footer class="w3-blue-grey w3-padding-32 w3-margin-top">
+        <div class="narrow-header-footer">
+            <!-- Footer Links -->
+            <div class="w3-center w3-margin-bottom" style="margin-bottom: 16px;">
+                <a href="{% url 'about' %}" class="w3-button w3-round w3-small w3-margin-right">About</a>
+                <a href="{% url 'privacy' %}" class="w3-button w3-round w3-small w3-margin-right">Privacy</a>
+                <a href="{% url 'terms' %}" class="w3-button w3-round w3-small">Terms</a>
+            </div>
             <!-- Author Photo -->
-            <div class="w3-circle" style="width:80px;height:80px;background: #f5f5f5; border:2px solid #607d8b; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #607d8b; font-weight: bold; font-size: 14px;">
-                Author
+            <div class="w3-center" style="margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+                <img src="{% static 'images/openBook.jpg.webp' %}" alt="Open Book" style="width:80px;height:80px; object-fit: cover; border-radius: 50%; border:2px solid #607d8b;">
             </div>
             
             <!-- Quote -->
-            <p class="w3-medium w3-margin-top w3-opacity" style="margin-top: 12px; text-align: center;">
-                <em>"Every life holds a story. Mine just happens to be written here."</em>
+            <p class="w3-medium w3-margin-top w3-opacity w3-center" style="margin-top: 12px; text-align: center;">
+                <em>"Thanks for sticking around — you deserve a medal... or at least a cup of tea"</em>
             </p>
             
             <!-- Decorative Line -->
             <hr style="width:60%; margin: 10px auto; border:1px solid #ccc; opacity:0.3;">
             
             <!-- Signature -->
-            <p class="w3-medium w3-opacity" style="text-align: center;">
-                <em>{{ AUTHOR_SIGNATURE }}</em>
+            <p class="w3-medium w3-opacity w3-center" style="text-align: center;">
+                <em>Peter</em>
             </p>
             
             <!-- Copyright -->
-            <p class="w3-small" style="margin-top: 10px; text-align: center;">&copy; 2025 EasyAS International</p>
-            
+            <p class="w3-small w3-center" style="margin-top: 10px; text-align: center;">&copy; 2025 Peter's Autobiography</p>
         </div>
     </footer>
     

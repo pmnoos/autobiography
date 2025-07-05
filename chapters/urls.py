@@ -20,8 +20,7 @@ urlpatterns = [
     # Image Upload
     path("upload_image/", upload_image, name="upload_image"),
 
-    # Gallery App
-    path("gallery/", include("gallery.urls")),
+    # Gallery App - Removed duplicate URL pattern (already defined in core/urls.py)
 
     # Grammar Check API
     path("check_grammar/", check_grammar, name="check_grammar"),  # Changed hyphen to underscore

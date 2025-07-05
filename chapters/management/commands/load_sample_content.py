@@ -5,35 +5,37 @@ class Command(BaseCommand):
     help = 'Load sample chapters for demo purposes.'
 
     def handle(self, *args, **kwargs):
+        # Clear existing chapters first
+        Chapter.objects.all().delete()
         chapters = [
             {
-                "title": "My Early Years",
-                "subtitle": "Childhood Memories",
-                "content": "I was born in a small town surrounded by rolling hills and friendly neighbors. My earliest memories are of playing in the garden, chasing butterflies, and listening to my grandmother's stories by the fireplace. School days were filled with curiosity and laughter, and I learned the value of friendship and kindness from an early age.",
+                "title": "Welcome to LifeStory Platform",
+                "subtitle": "Your Digital Memoir Journey Begins",
+                "content": "Welcome to your personal life story platform. This is where your journey begins - a digital space to capture, preserve, and share the moments that have shaped your life. Whether you're writing for yourself, your family, or future generations, this platform provides the tools you need to tell your story beautifully and professionally.",
                 "order": 1,
             },
             {
-                "title": "Adventures Abroad",
-                "subtitle": "Exploring the World",
-                "content": "After finishing school, I set out to see the world. My travels took me from the bustling streets of Paris to the tranquil beaches of Thailand. Each new place brought fresh experiences, new friends, and a deeper understanding of different cultures. Traveling taught me to be adaptable, open-minded, and grateful for the beauty of our planet.",
+                "title": "Getting Started with Your Story",
+                "subtitle": "How to Begin Your Autobiography",
+                "content": "Starting your life story can feel overwhelming, but it doesn't have to be. Begin with the moments that matter most to you - your earliest memories, significant life events, or the people who have influenced you most. Use this platform's rich text editor to bring your stories to life with formatting, images, and personal touches that make your narrative uniquely yours.",
                 "order": 2,
             },
             {
-                "title": "Family and Friends",
-                "subtitle": "The Heart of My Story",
-                "content": "Family has always been my anchor. From Sunday dinners to holiday celebrations, the warmth and support of my loved ones have shaped who I am. My friends have been my companions on life's journey, sharing in both the joys and the challenges. Together, we've created memories that will last a lifetime.",
+                "title": "Organizing Your Chapters",
+                "subtitle": "Structuring Your Life Story",
+                "content": "A well-organized autobiography helps readers follow your journey. Consider organizing your chapters chronologically, by theme, or by significant life periods. Use the order field to arrange your chapters in the sequence you want them to appear. Each chapter can include photos, memories, and reflections that bring your story to life.",
                 "order": 3,
             },
             {
-                "title": "Lessons Learned",
-                "subtitle": "Wisdom Gained",
-                "content": "Life has taught me many lessons—some easy, some hard. I've learned that perseverance pays off, that kindness matters, and that it's okay to ask for help. Every setback was a setup for a comeback, and every mistake was a chance to grow. I hope my story inspires others to embrace their own journey with courage and hope.",
+                "title": "Adding Photos and Memories",
+                "subtitle": "Bringing Your Story to Life",
+                "content": "Photographs have the power to transport readers to specific moments in time. Upload your photos through the gallery feature and link them to relevant chapters. Include captions and descriptions that provide context and enhance the storytelling experience. Your images will be displayed beautifully alongside your written content.",
                 "order": 4,
             },
             {
-                "title": "Looking Forward",
-                "subtitle": "Dreams for the Future",
-                "content": "As I look to the future, I am filled with hope and excitement. There are still places to explore, goals to achieve, and stories to write. I believe the best chapters are yet to come, and I am grateful for every moment that has brought me to where I am today.",
+                "title": "Sharing Your Story",
+                "subtitle": "Connecting with Readers",
+                "content": "Your life story is a gift to future generations and a way to connect with others who may find inspiration in your experiences. Use this platform to share your wisdom, lessons learned, and the unique perspective that only you can offer. Your story matters, and this platform helps you tell it in a way that honors your journey.",
                 "order": 5,
             },
         ]
